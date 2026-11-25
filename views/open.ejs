@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Express - Ouverte</title>
+    <!-- Tailwind CSS CDN pour un design ultra moderne et soigné -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 min-h-screen text-slate-100 flex flex-col justify-between">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-emerald-500/20 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-xl">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-white">ExpressShop Pro</h1>
+                    <p class="text-xs text-slate-400">TP N°8 — EJS Dynamic Views</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="/" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg border border-slate-700 transition">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Dashboard API
+                </a>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 animate-pulse">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2"></span> En Ligne
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-1 flex flex-col items-center justify-center text-center">
+        
+        <!-- Status Badge -->
+        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Statut : Magasin Ouvert (8h00 - 18h00)</span>
+        </div>
+
+        <!-- Enoncé Obligatoire -->
+        <div class="bg-slate-800/80 backdrop-blur-xl border border-emerald-500/30 rounded-3xl p-8 md:p-12 shadow-2xl shadow-emerald-950/50 max-w-2xl w-full">
+            <div class="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl border border-emerald-500/40">
+                <i class="fa-solid fa-door-open"></i>
+            </div>
+            
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-4">
+                Bienvenue ! Notre boutique est actuellement ouverte.
+            </h2>
+            <p class="text-slate-300 text-base md:text-lg mb-8 leading-relaxed">
+                Nos conseillers et nos rayons sont à votre disposition. Profitez de nos offres exclusives disponibles jusqu'à 18h00 !
+            </p>
+
+            <!-- Dynamic System Time Card -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 bg-slate-900/80 rounded-2xl p-4 border border-slate-700/60 text-left mb-8">
+                <div class="p-2">
+                    <span class="block text-xs text-slate-400 font-medium">Heure Système</span>
+                    <span class="text-lg font-bold text-emerald-400"><%= currentTimeFormatted %></span>
+                </div>
+                <div class="p-2">
+                    <span class="block text-xs text-slate-400 font-medium">Horaires d'Ouverture</span>
+                    <span class="text-lg font-bold text-white">08h00 — 18h00</span>
+                </div>
+                <div class="col-span-2 md:col-span-1 p-2">
+                    <span class="block text-xs text-slate-400 font-medium">Fermeture dans</span>
+                    <span class="text-lg font-bold text-amber-300"><%= timeUntilClose %></span>
+                </div>
+            </div>
+
+            <!-- Shop Actions -->
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <button class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-emerald-500/25 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Parcourir le catalogue</span>
+                </button>
+                <a href="/shop?hour=20" class="bg-slate-700/60 hover:bg-slate-700 text-slate-200 font-medium px-5 py-3 rounded-xl transition border border-slate-600 flex items-center justify-center space-x-2 text-sm">
+                    <i class="fa-solid fa-vial"></i>
+                    <span>Tester la vue Fermée (20h)</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Featured Products Preview (Modern Pro Extension) -->
+        <div class="mt-12 w-full max-w-2xl">
+            <h3 class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-4 text-left">Produits disponibles immédiatement</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 flex items-center space-x-4 text-left hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-white">Pack Node.js & Express</h4>
+                        <p class="text-xs text-slate-400">En stock • Livraison instantanée</p>
+                    </div>
+                </div>
+                <div class="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 flex items-center space-x-4 text-left hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-white">Serveur Développeur</h4>
+                        <p class="text-xs text-slate-400">Actif • Prêt pour le déploiement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>TP8 - Développement Backend avec Express.js & EJS • Port 5000</p>
+    </footer>
+
+</body>
+</html>

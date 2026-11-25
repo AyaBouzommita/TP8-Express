@@ -1,0 +1,26 @@
+{
+  "name": "tp8-express",
+  "version": "1.0.0",
+  "description": "TP N°8 — Développement Backend avec Express.js et EJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test-api.js"
+  },
+  "keywords": [
+    "express",
+    "ejs",
+    "nodejs",
+    "rest-api",
+    "tp8"
+  ],
+  "author": "TP8 Student Pro",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "morgan": "^1.12.1"
+  }
+}

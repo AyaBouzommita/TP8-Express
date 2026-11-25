@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Express - Fermée</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-rose-950 min-h-screen text-slate-100 flex flex-col justify-between">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-rose-500/20 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 font-bold text-xl">
+                    <i class="fa-solid fa-store-slash"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-white">ExpressShop Pro</h1>
+                    <p class="text-xs text-slate-400">TP N°8 — EJS Dynamic Views</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="/" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg border border-slate-700 transition">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Dashboard API
+                </a>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/30">
+                    <span class="w-2 h-2 rounded-full bg-rose-400 mr-2"></span> Hors Ligne
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-1 flex flex-col items-center justify-center text-center">
+        
+        <!-- Status Badge -->
+        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm font-medium mb-6">
+            <i class="fa-solid fa-moon"></i>
+            <span>Statut : Magasin Actuellement Fermé</span>
+        </div>
+
+        <!-- Enoncé Obligatoire -->
+        <div class="bg-slate-800/80 backdrop-blur-xl border border-rose-500/30 rounded-3xl p-8 md:p-12 shadow-2xl shadow-rose-950/50 max-w-2xl w-full">
+            <div class="w-20 h-20 bg-rose-500/20 text-rose-400 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl border border-rose-500/40">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-4">
+                Désolé, notre boutique est actuellement fermée.
+            </h2>
+            <p class="text-slate-300 text-base md:text-lg mb-8 leading-relaxed">
+                Nos horaires de service sont du lundi au samedi, de <strong>08h00 à 18h00</strong>. Laissez-nous votre email pour être notifié de la réouverture !
+            </p>
+
+            <!-- Dynamic System Time Card -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 bg-slate-900/80 rounded-2xl p-4 border border-slate-700/60 text-left mb-8">
+                <div class="p-2">
+                    <span class="block text-xs text-slate-400 font-medium">Heure Système</span>
+                    <span class="text-lg font-bold text-rose-400"><%= currentTimeFormatted %></span>
+                </div>
+                <div class="p-2">
+                    <span class="block text-xs text-slate-400 font-medium">Horaires d'Ouverture</span>
+                    <span class="text-lg font-bold text-white">08h00 — 18h00</span>
+                </div>
+                <div class="col-span-2 md:col-span-1 p-2">
+                    <span class="block text-xs text-slate-400 font-medium">Prochaine Ouverture</span>
+                    <span class="text-lg font-bold text-emerald-400"><%= nextOpening %></span>
+                </div>
+            </div>
+
+            <!-- Shop Actions -->
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="/shop?hour=14" class="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-medium px-5 py-3 rounded-xl transition border border-emerald-500/40 flex items-center justify-center space-x-2 text-sm">
+                    <i class="fa-solid fa-vial"></i>
+                    <span>Tester la vue Ouverte (14h)</span>
+                </a>
+                <a href="/" class="bg-slate-700/60 hover:bg-slate-700 text-slate-200 font-medium px-5 py-3 rounded-xl transition border border-slate-600 flex items-center justify-center space-x-2 text-sm">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Tester les Routes API</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Notification Subscription Card -->
+        <div class="mt-8 w-full max-w-2xl bg-slate-800/40 border border-slate-700/60 rounded-2xl p-6 text-left">
+            <div class="flex items-start space-x-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg mt-1 shrink-0">
+                    <i class="fa-regular fa-bell"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-white">Précommande et notifications</h4>
+                    <p class="text-xs text-slate-400 mt-1">Vous pouvez toujours envoyer des requêtes API via <code>/api/users</code> pendant les heures de fermeture.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>TP8 - Développement Backend avec Express.js & EJS • Port 5000</p>
+    </footer>
+
+</body>
+</html>

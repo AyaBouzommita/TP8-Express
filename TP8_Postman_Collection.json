@@ -1,0 +1,145 @@
+{
+  "info": {
+    "_postman_id": "tp8-express-tests-collection-id",
+    "name": "TP8 — Express.js & EJS Collection",
+    "description": "Collection Postman complète pour le TP N°8 Développement Backend avec Express.js.\nContient les tests de l'Exercice 3 (GET /api/users et POST /api/users) et les routes EJS.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Exercice 3 - Test 1 : GET /api/users",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "users"
+          ]
+        },
+        "description": "Objectif TP : Vérifier que le message « Liste des utilisateurs » s'affiche bien."
+      },
+      "response": []
+    },
+    {
+      "name": "Exercice 3 - Test 2 : POST /api/users",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ahmed\",\n  \"email\": \"ahmed@gmail.com\",\n  \"age\": 22\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "users"
+          ]
+        },
+        "description": "Objectif TP : Envoyer name: Ahmed, email: ahmed@gmail.com, age: 22 dans le corps (req.body) et vérifier qu'ils sont récupérés et affichés dans la réponse."
+      },
+      "response": []
+    },
+    {
+      "name": "Extension Pro : GET /shop (Heure Réelle)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/shop",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "shop"
+          ]
+        },
+        "description": "Affiche conditionnellement open.ejs ou close.ejs selon l'heure du système."
+      },
+      "response": []
+    },
+    {
+      "name": "Extension Pro : GET /shop?hour=10 (Test Ouvert EJS)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/shop?hour=10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "shop"
+          ],
+          "query": [
+            {
+              "key": "hour",
+              "value": "10"
+            }
+          ]
+        },
+        "description": "Simule 10h00 pour afficher 'open.ejs'."
+      },
+      "response": []
+    },
+    {
+      "name": "Extension Pro : GET /shop?hour=22 (Test Fermé EJS)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/shop?hour=22",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "shop"
+          ],
+          "query": [
+            {
+              "key": "hour",
+              "value": "22"
+            }
+          ]
+        },
+        "description": "Simule 22h00 pour afficher 'close.ejs'."
+      },
+      "response": []
+    }
+  ]
+}
